@@ -1,7 +1,7 @@
 {
-    "name": "social-media-app",
+    "name": "chat-app",
     "version": "1.0.0",
-    "description": "Save Your Memories",
+    "description": "Collaborate With Everyone",
     "main": "server.js",
     "type": "module",
     "scripts": {
@@ -15,7 +15,7 @@
         "url": "git+https://github.com/SherbazKhan148/social-media-app.git"
     },
     "keywords": [
-        "Memories"
+        "Chat"
     ],
     "author": "Sherbaz Khan",
     "license": "ISC",
@@ -34,7 +34,8 @@
         "google-auth-library": "^6.1.4",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.11.11",
-        "morgan": "^1.10.0"
+        "morgan": "^1.10.0",
+        "multer": "^1.4.2"
     },
     "devDependencies": {
         "concurrently": "^5.3.0",

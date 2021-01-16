@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+/* Shared */
+.loginBtn {
+    box-sizing: border-box !important;
+    position: relative !important;
+    /* width: 13em;  - apply for fixed size */
+    /* margin: 0.1em !important; */
+    padding: 0 15px 2px 40px !important;
+    border: none !important;
+    text-align: left !important;
+    line-height: 36px !important;
+    white-space: nowrap !important;
+    border-radius: 0.2em !important;
+    font-size: 16px !important;
+    color: #fff !important;
+}
+.loginBtn:before {
+    content: "" !important;
+    box-sizing: border-box !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 34px !important;
+    height: 100% !important;
+}
+.loginBtn:focus {
+    outline: none !important;
+}
+.loginBtn:active {
+    box-shadow: inset 0 0 0 32px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Google */
+.loginBtn--google {
+    /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+    background: #dd4b39 !important;
+}
+.loginBtn--google:before {
+    border-right: #bb3f30 1px solid !important;
+    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png")
+        6px 6px no-repeat !important;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+    background: #e74b37 !important;
+}
