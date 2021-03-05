@@ -15,6 +15,9 @@ const userSchema = mongoose.Schema(
         password: {
             type: String,
         },
+        image: {
+            type: String,
+        },
         isAdmin: {
             type: Boolean,
             default: false,
@@ -26,9 +29,6 @@ const userSchema = mongoose.Schema(
             type: String,
         },
         lastName: {
-            type: String,
-        },
-        image: {
             type: String,
         },
         googleTokenId: {

@@ -57,3 +57,50 @@ code {
 .loginBtn--google:focus {
     background: #e74b37 !important;
 }
+
+.chatDiv {
+    height: 300px;
+    width: 650px;
+    overflow-y: scroll;
+    border: 5px solid grey;
+    border-radius: 10px;
+}
+
+.row {
+    margin: 0;
+}
+
+.other {
+    background-color: #f4f7f9;
+    border-radius: 25px;
+    color: black;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.myMsgs {
+    background-color: #a3eaf7;
+    border-radius: 25px;
+    color: black;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.input {
+    height: 35px;
+}
+
+.admin {
+    background-color: #84ce59;
+    border-radius: 25px;
+    color: black;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}

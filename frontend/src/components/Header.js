@@ -1,12 +1,12 @@
 import React from "react";
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../actions/userActions";
-import SearchBox from "./SearchBox";
+// import SearchBox from "./SearchBox";
 
-const Header = () => {
+const Header = ({ appName }) => {
     const dispatch = useDispatch();
 
     const userLogin = useSelector((state) => state.userLogin);
@@ -20,23 +20,31 @@ const Header = () => {
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand>Memories</Navbar.Brand>
+                        <Navbar.Brand>{appName}</Navbar.Brand>
                     </LinkContainer>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                     <Navbar.Collapse id="basic-navbar-nav">
-                        {userInfo && (
-                            <Route
-                                render={({ history }) => (
-                                    <SearchBox history={history} />
-                                )}
-                            />
-                        )}
                         <Nav className="ml-auto">
                             {userInfo ? (
                                 <NavDropdown
-                                    title={userInfo.name}
+                                    title={
+                                        userInfo.image ? (
+                                            <>
+                                                <img
+                                                    src={userInfo.image}
+                                                    width="40"
+                                                    height="40"
+                                                    className=" rounded-circle"
+                                                    alt="Profile Pic"
+                                                />{" "}
+                                                Welcome {userInfo.name}
+                                            </>
+                                        ) : (
+                                            `Welcome ${userInfo.name}`
+                                        )
+                                    }
                                     id="username"
                                 >
                                     <LinkContainer to="/profile">

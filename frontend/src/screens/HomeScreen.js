@@ -7,8 +7,6 @@ import Paginate from "../components/Paginate";
 import { Link } from "react-router-dom";
 
 const HomeScreen = ({ match, history }) => {
-    const dispatch = useDispatch();
-
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
@@ -21,6 +19,7 @@ const HomeScreen = ({ match, history }) => {
     return (
         <>
             <h1>Welcome {userInfo?.name}</h1>
+            <Link to="/chat">Go to Chat</Link>
         </>
     );
 };

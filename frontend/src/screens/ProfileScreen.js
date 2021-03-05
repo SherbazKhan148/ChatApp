@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Form, Row, Col, Button, Table } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import { logout } from "../actions/userActions";
+import axios from "axios";
 
 const ProfileScreen = ({ location, history }) => {
     const [name, setName] = useState("");
@@ -12,6 +13,8 @@ const ProfileScreen = ({ location, history }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState(null);
+    const [image, setImage] = useState("");
+    const [uploading, setUploading] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -39,6 +42,7 @@ const ProfileScreen = ({ location, history }) => {
                 } else {
                     setName(user.name);
                     setEmail(user.email);
+                    setImage(user.image);
                 }
             } else {
                 if (error && error.includes("Token Failed")) {
@@ -48,13 +52,42 @@ const ProfileScreen = ({ location, history }) => {
         }
     }, [dispatch, history, userInfo, user, error]);
 
+    const uploadFileHandler = async (e) => {
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append("image", file);
+        setUploading(true);
+
+        try {
+            const config = {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            };
+
+            const { data } = await axios.post("/api/upload", formData, config);
+
+            setImage(data);
+            setUploading(false);
+        } catch (error) {
+            setUploading(false);
+            alert("Images Only Allowed To Upload!");
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
             setMessage("Passwords Not Match");
         } else {
             dispatch(
-                updateUserProfile({ id: user._id, name, email, password })
+                updateUserProfile({
+                    id: user._id,
+                    name,
+                    email,
+                    password,
+                    image,
+                })
             );
         }
     };
@@ -106,6 +139,28 @@ const ProfileScreen = ({ location, history }) => {
                         ></Form.Control>
                     </Form.Group>
 
+                    <Form.Group controlId="image">
+                        {uploading ? (
+                            <Loader />
+                        ) : (
+                            <>
+                                <Form.Label>Select Image</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="image.jpg"
+                                    value={image}
+                                    onChange={(e) => setImage(e.target.value)}
+                                ></Form.Control>
+                                <Form.File
+                                    id="image-file"
+                                    label="Choose File"
+                                    custom
+                                    onChange={uploadFileHandler}
+                                ></Form.File>
+                            </>
+                        )}
+                    </Form.Group>
+
                     <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
                         <Form.Control
@@ -132,7 +187,7 @@ const ProfileScreen = ({ location, history }) => {
                 </Form>
             </Col>
             <Col md={8}>
-                <h2>My Posts</h2>
+                <h2>My</h2>
             </Col>
         </Row>
     );

@@ -27,6 +27,7 @@ import {
     USER_UPDATE_RESET,
 } from "../constants/userConstants";
 import axios from "axios";
+import { MESSAGE_LIST_RESET } from "../constants/messageConstants";
 
 export const login = (email, password) => async (dispatch) => {
     try {
@@ -105,6 +106,7 @@ export const logout = () => (dispatch) => {
     dispatch({ type: USER_LIST_RESET });
     dispatch({ type: USER_UPDATE_PROFILE_RESET });
     dispatch({ type: USER_UPDATE_RESET });
+    dispatch({ type: MESSAGE_LIST_RESET });
 };
 
 export const Register = (name, email, password) => async (dispatch) => {

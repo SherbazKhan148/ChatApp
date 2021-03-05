@@ -9,16 +9,18 @@ import ProfileScreen from "./screens/ProfileScreen";
 import UsersListScreen from "./screens/UsersListScreen";
 import UserEditScreen from "./screens/UserEditScreen";
 import HomeScreen from "./screens/HomeScreen";
+import ChatScreen from "./screens/ChatScreen";
 
 const App = () => {
     return (
         <Router>
-            <Header />
+            <Header appName="Chat App" />
             <main className="py-3">
                 <Container>
                     <Route path="/login" component={LoginScreen} />
                     <Route path="/register" component={RegisterScreen} />
                     <Route path="/profile" component={ProfileScreen} />
+                    <Route path="/chat" component={ChatScreen} />
 
                     <Route path="/admin/userlist" component={UsersListScreen} />
                     <Route

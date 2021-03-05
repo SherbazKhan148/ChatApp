@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const SearchBox = ({ history }) => {
+const SearchBox = ({ history, name = "name" }) => {
     const submitHandler = (e) => {
         e.preventDefault();
 
@@ -23,7 +23,7 @@ const SearchBox = ({ history }) => {
                     name="q"
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
-                    placeholder="Search Posts..."
+                    placeholder={`Search ${name}...`}
                 ></Form.Control>
 
                 <Button type="submit" variant="outline-success" className="p-2">
